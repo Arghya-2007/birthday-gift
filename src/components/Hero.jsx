@@ -55,7 +55,7 @@ export default function Hero() {
         duration: 1.2,
         ease: 'elastic.out(1, 0.6)',
         stagger: 0.04,
-        delay: 1,
+        delay: 0.6,
       });
 
       /* ---- Name: Elastic explosion letter reveal ---- */
@@ -75,7 +75,7 @@ export default function Hero() {
         duration: 1.2,
         ease: 'elastic.out(1, 0.6)',
         stagger: 0.04,
-        delay: 2,
+        delay: 1.6,
       });
 
       /* ---- Floating shapes: slow drift (yoyo, infinite) ---- */
