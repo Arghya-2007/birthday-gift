@@ -1,0 +1,31 @@
+.typewriter-container {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.typewriter-text {
+  white-space: pre-wrap;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1rem;
+  background-color: currentColor;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

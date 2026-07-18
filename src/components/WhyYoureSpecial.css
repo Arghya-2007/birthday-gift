@@ -1,0 +1,177 @@
+/* ===== Why You're Special Section ===== */
+.special-section {
+  position: relative;
+  padding: 5rem 1.5rem;
+  background: transparent;
+}
+
+/* ---------- Section heading ---------- */
+.special-heading {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  color: #4a1942;
+  text-align: center;
+  margin-bottom: 3rem;
+  /* Start hidden — GSAP animates in */
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+/* ---------- Decorative stickers ---------- */
+.special-sticker {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.special-sticker img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.special-sticker--sparkles {
+  top: 15%;
+  left: 8%;
+  width: 80px;
+  height: 80px;
+}
+.special-sticker--crown {
+  bottom: 10%;
+  right: 5%;
+  width: 100px;
+  height: 100px;
+}
+
+/* ---------- Responsive grid ---------- */
+.special-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .special-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .special-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+}
+
+/* ---------- Individual card ---------- */
+.special-card {
+  position: relative;
+  padding: 1.75rem 1.25rem;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(251, 207, 232, 0.4);
+  border-radius: 1.125rem;
+  box-shadow:
+    0 4px 20px rgba(168, 85, 150, 0.07),
+    0 1.5px 6px rgba(168, 85, 150, 0.04);
+  text-align: center;
+  /* Start hidden — GSAP animates in */
+  opacity: 0;
+  transform: scale(0.85) translateY(30px);
+  /* Enable GPU layer for smooth transforms */
+  will-change: transform, opacity;
+  /* Smooth hover transition (desktop) */
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- Desktop hover lift ---------- */
+@media (hover: hover) and (pointer: fine) {
+  .special-card:hover {
+    transform: scale(1.05) translateY(-4px);
+    box-shadow:
+      0 8px 32px rgba(168, 85, 150, 0.14),
+      0 2px 10px rgba(168, 85, 150, 0.08);
+  }
+}
+
+/* ---------- Emoji / icon ---------- */
+.special-card__emoji {
+  font-size: 2.25rem;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  /* Prevent emoji from triggering italic on some renderers */
+  font-style: normal;
+}
+
+/* ---------- Title ---------- */
+.special-card__title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #7e22ce;
+  margin-bottom: 0.35rem;
+}
+
+/* ---------- Description ---------- */
+.special-card__text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #4a1942;
+  opacity: 0.85;
+}
+
+/* ---------- Mobile fine-tuning ---------- */
+@media (max-width: 480px) {
+  .special-section {
+    padding: 3.5rem 1rem;
+  }
+
+  .special-heading {
+    margin-bottom: 2rem;
+  }
+
+  .special-sticker--sparkles {
+    top: 8%;
+    left: 2%;
+    width: 50px;
+    height: 50px;
+  }
+  .special-sticker--crown {
+    bottom: 5%;
+    right: 2%;
+    width: 60px;
+    height: 60px;
+  }
+
+  .special-grid {
+    gap: 1rem;
+  }
+
+  .special-card {
+    padding: 1.25rem 1rem;
+    border-radius: 0.875rem;
+  }
+
+  .special-card__emoji {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .special-card__title {
+    font-size: 1rem;
+  }
+
+  .special-card__text {
+    font-size: 0.825rem;
+  }
+}

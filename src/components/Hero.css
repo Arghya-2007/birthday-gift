@@ -1,0 +1,241 @@
+/* ===== Hero Section ===== */
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem 1.5rem;
+}
+
+/* ---------- Animated gradient background ---------- */
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* Oversized so GSAP can shift the position without revealing edges */
+  background: transparent;
+  background-size: 400% 400%;
+}
+
+/* ---------- Floating decorative shapes ---------- */
+.hero-shapes {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.18;
+  will-change: transform;
+}
+
+.hero-shape--1 {
+  width: 220px;
+  height: 220px;
+  top: 8%;
+  left: -4%;
+  background: radial-gradient(circle, #f472b6 0%, transparent 70%);
+}
+
+.hero-shape--2 {
+  width: 160px;
+  height: 160px;
+  top: 60%;
+  right: -3%;
+  background: radial-gradient(circle, #c084fc 0%, transparent 70%);
+}
+
+.hero-shape--3 {
+  width: 120px;
+  height: 120px;
+  bottom: 12%;
+  left: 15%;
+  background: radial-gradient(circle, #fbbf24 0%, transparent 70%);
+}
+
+.hero-shape--4 {
+  width: 90px;
+  height: 90px;
+  top: 18%;
+  right: 18%;
+  background: radial-gradient(circle, #fb923c 0%, transparent 70%);
+}
+
+/* SVG star shape */
+.hero-shape--star {
+  position: absolute;
+  top: 30%;
+  left: 70%;
+  opacity: 0.12;
+  will-change: transform;
+}
+
+/* ---------- Content layer ---------- */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+/* ---------- Headline ---------- */
+.hero-headline {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  color: #4a1942;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  overflow: hidden;
+}
+
+.hero-headline .letter,
+.hero-name .letter {
+  display: inline-block;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* ---------- Name line ---------- */
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  color: #7e22ce;
+  line-height: 1.1;
+}
+
+/* ---------- Sticker: Lottie sparkle slot (top-right) ---------- */
+.hero-sticker-slot {
+  position: absolute;
+  z-index: 3;
+  top: 12%;
+  right: 8%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* ---------- Accent stickers (PNG, GSAP-floated) ---------- */
+.hero-sticker {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;              /* GSAP handles entrance */
+  will-change: transform;
+}
+
+.hero-sticker img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Balloons — bottom-left */
+.hero-sticker--balloons {
+  bottom: 10%;
+  left: 4%;
+  width: 90px;
+  height: 90px;
+}
+
+/* Crown — top-left */
+.hero-sticker--crown {
+  top: 8%;
+  left: 6%;
+  width: 70px;
+  height: 70px;
+}
+
+/* Cake — bottom-right */
+.hero-sticker--cake {
+  bottom: 14%;
+  right: 6%;
+  width: 80px;
+  height: 80px;
+}
+
+@media (max-width: 640px) {
+  .hero-sticker-slot {
+    top: 6%;
+    right: 4%;
+    width: 72px;
+    height: 72px;
+  }
+
+  .hero-sticker--balloons {
+    bottom: 8%;
+    left: 2%;
+    width: 56px;
+    height: 56px;
+  }
+
+  .hero-sticker--crown {
+    top: 5%;
+    left: 3%;
+    width: 48px;
+    height: 48px;
+  }
+
+  .hero-sticker--cake {
+    bottom: 10%;
+    right: 3%;
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* ---------- Scroll-down indicator ---------- */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0; /* revealed by GSAP */
+}
+
+.hero-scroll-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: rgba(74, 25, 66, 0.55);
+}
+
+.hero-scroll-chevron {
+  width: 24px;
+  height: 24px;
+  color: rgba(74, 25, 66, 0.45);
+  animation: hero-bounce 2s ease-in-out infinite;
+}
+
+@keyframes hero-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}

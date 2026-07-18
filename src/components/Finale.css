@@ -1,0 +1,244 @@
+/* ===== Finale Section ===== */
+.finale-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 4rem 1.5rem;
+  background: transparent;
+}
+
+/* ---------- Content layer ---------- */
+.finale-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+/* ---------- Big headline ---------- */
+.finale-headline {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(2.75rem, 9vw, 6rem);
+  color: #4a1942;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  /* Start hidden — GSAP animates in */
+  opacity: 0;
+  transform: scale(0.8) translateY(30px);
+}
+
+/* ---------- Pulse / glow keyframes ---------- */
+@keyframes finale-glow {
+  0%, 100% {
+    text-shadow:
+      0 0 8px rgba(168, 85, 247, 0.15),
+      0 0 24px rgba(244, 114, 182, 0.1);
+    filter: brightness(1);
+  }
+  50% {
+    text-shadow:
+      0 0 20px rgba(168, 85, 247, 0.35),
+      0 0 48px rgba(244, 114, 182, 0.2),
+      0 0 72px rgba(251, 191, 36, 0.12);
+    filter: brightness(1.06);
+  }
+}
+
+.finale-headline--glowing {
+  animation: finale-glow 3s ease-in-out infinite;
+}
+
+/* ---------- Sign-off ---------- */
+.finale-signoff-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.finale-signoff {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 500;
+  color: #9333ea;
+  white-space: pre; /* Keep spaces intact when splitting to spans */
+}
+
+.finale-signoff span {
+  opacity: 0;
+}
+
+.finale-pen-icon {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  font-size: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- Sticker / Lottie slot (central celebration) ---------- */
+.finale-sticker-slot {
+  position: relative;
+  z-index: 3;
+  width: 140px;
+  height: 140px;
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+/* ---------- Accent stickers (PNG, around the section) ---------- */
+.finale-sticker {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;              /* GSAP handles entrance */
+  will-change: transform;
+}
+
+.finale-sticker img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Party popper — top-left */
+.finale-sticker--party {
+  top: 8%;
+  left: 5%;
+  width: 90px;
+  height: 90px;
+}
+
+/* Celebration — top-right */
+.finale-sticker--celebration {
+  top: 6%;
+  right: 5%;
+  width: 85px;
+  height: 85px;
+}
+
+/* Hearts — bottom-left */
+.finale-sticker--hearts {
+  bottom: 12%;
+  left: 6%;
+  width: 80px;
+  height: 80px;
+}
+
+/* Gift box — bottom-right */
+.finale-sticker--gift {
+  bottom: 10%;
+  right: 6%;
+  width: 75px;
+  height: 75px;
+}
+
+/* Sparkles — top-center */
+.finale-sticker--sparkles {
+  top: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65px;
+  height: 65px;
+}
+
+@media (max-width: 640px) {
+  .finale-sticker-slot {
+    width: 100px;
+    height: 100px;
+  }
+
+  .finale-sticker--party {
+    top: 4%;
+    left: 2%;
+    width: 56px;
+    height: 56px;
+  }
+
+  .finale-sticker--celebration {
+    top: 3%;
+    right: 2%;
+    width: 52px;
+    height: 52px;
+  }
+
+  .finale-sticker--hearts {
+    bottom: 8%;
+    left: 3%;
+    width: 50px;
+    height: 50px;
+  }
+
+  .finale-sticker--gift {
+    bottom: 6%;
+    right: 3%;
+    width: 48px;
+    height: 48px;
+  }
+
+  .finale-sticker--sparkles {
+    top: 2%;
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* ---------- Confetti canvas ---------- */
+.finale-confetti {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Individual confetti piece */
+.finale-confetti__piece {
+  position: absolute;
+  will-change: transform, opacity;
+  border-radius: 2px;
+}
+
+/* Circle variant */
+.finale-confetti__piece--circle {
+  border-radius: 50%;
+}
+
+/* Star variant (inline SVG positioned via JS) */
+.finale-confetti__piece--star {
+  border-radius: 0;
+  background: none !important;
+}
+
+.finale-confetti__piece--star svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- Mobile tweaks ---------- */
+@media (max-width: 480px) {
+  .finale-section {
+    padding: 3rem 1rem;
+  }
+
+  .finale-headline {
+    letter-spacing: -0.01em;
+  }
+}
